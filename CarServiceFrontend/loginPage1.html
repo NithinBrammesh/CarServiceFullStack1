@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginTemplate2</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="LoginPage1.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="icon">
+            <h2 class="logo">CarService</h2>
+          </div>
+          <div>
+            <div class="menu">
+              <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SERVICE</a></li>
+                <li><a href="#">DESIGN</a></li>
+                <li><a href="#">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
+           <div class="search">
+    <input class="srch" name="" placeholder="Type to text">
+    <a href="#"><button class="btn">Search</button></a>
+           </div>
+           
+    <form action="http://localhost:8081/api/userDetails" method="POST" onsubmit="addUser(event)">
+            <div  class="wrapper">
+                    <h1>Register</h1><br>
+                    <h4>Kindly fill the form to register</h4>
+                <div class="inputbox">
+                
+                <input type="text" placeholder="Name" id="name" autocomplete="name">
+                <i class='bx bxs-user'></i>
+                </div>
+                <div class="inputbox">
+                <input type="email" placeholder="Email" id="email" autocomplete="email">
+                <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="inputbox">
+                <input type="tel" pattern="[6-9]{1}[0-9]{9}" placeholder="Phone no" id="phone" autocomplete="tel">
+                <i class="bx bx-phone"></i>
+                </div>
+                <div class="inputbox">
+                <input type="password" placeholder="Password" autocomplete="new-password" id="password">
+                <i class='bx bxs-lock-alt'></i>
+               </div>
+               <div>
+               <button type="submit" onclick="addUser(event)" class="button">Register</button>
+               </div>
+               <div class="register">
+               <p>I already have register </p><a href="loginTemplate.html">Login</a></div>
+            </div>
+        </div>
+    </form>
+    <script src="LoginPage1.js"></script>
+</body>
+</html>

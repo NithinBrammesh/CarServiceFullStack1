@@ -1,0 +1,46 @@
+1. Write a script that prints "Hello, World!" to the terminal.
+2. Create a script that assigns a name to a variable and prints "Hello, [name]!".
+3. Write a script that takes two numbers as inputs and prints their sum, difference, product, and quotient.
+4. Write a script to check if a number is positive, negative, or zero.
+5. Write a script that prints numbers from 1 to 10 using a for loop.
+6. Write a script that asks the user for their name and age, then prints a message like, "Hello [name], you are [age] years old!"
+7. Write a script that creates a new directory and a file inside it, then writes "Bash is fun!" to the file.
+8. Write a script with a function that takes a number as input and checks if it's even or odd.
+9. Write a script that accepts two numbers as command-line arguments and prints their sum.
+10. Create a script to back up a directory by copying its contents to another directory and adding a timestamp to the backup folder name.
+
+11. Write a script that checks if a given word exists in a string using grep.
+12. Write a script to check if an input string is a valid email address. Use basic regex for emails (e.g., ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$).
+13. Write a script to extract all numbers from a string.
+Example: Extract 123 and 456 from "abc123def456".
+bash
+Copy code
+echo "abc123def456" | grep -oE "[0-9]+"
+Replace Words in a String
+
+14. Write a script that uses sed to replace "old" with "new" in a string.
+Example: Replace "hello" with "hi" in "hello world!"
+bash
+Copy code
+echo "hello world!" | sed "s/hello/hi/"
+Advanced Level
+Validate a Phone Number
+
+15. Write a script that checks if an input matches the format of a phone number (e.g., (123) 456-7890 or 123-456-7890).
+Log File Analysis
+
+16. Write a script to extract all IP addresses from a log file using regex.
+Example regex for IP: ([0-9]{1,3}\.){3}[0-9]{1,3}
+Password Strength Checker
+
+17. Write a script to check if a password meets criteria: at least one uppercase, one lowercase, one number, and one special character.
+Regex Tools in Bash
+Use grep, sed, or awk for matching patterns in files or strings.
+Test your regex interactively on websites like regex101.
+Let me know if you want detailed examples for any of these!
+
+
+
+
+
+

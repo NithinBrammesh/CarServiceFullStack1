@@ -1,0 +1,9 @@
+ID	Car_Category	Price
+1	SUV	1000
+2	Harrier	N/A
+3	Sedan	400
+4	4Wheeler	800
+5	6Wheeler	1200
+6	Nexon-5	1200
+7	Nexon	1200
+8	SUV	N/A

@@ -1,0 +1,4 @@
+chmod
+chown
+
+how to add execute permission to a script or file. 
