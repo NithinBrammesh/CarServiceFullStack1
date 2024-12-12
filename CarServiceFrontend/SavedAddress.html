@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="SavedAddress.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="icon">
+          <h2 class="logo">CarService</h2>
+        </div>
+        <div>
+          <div class="menu">
+            <ul>
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">SERVICE</a></li>
+              <li><a href="#">DESIGN</a></li>
+              <li><a href="#">CONTACT</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="search">
+  <input class="srch" name="" placeholder="Type to text">
+  <a href="#"><button class="btn">Search</button></a>
+         </div>
+
+    <div class="container">
+        <h1>Saved Addresses</h1>
+        
+        <!-- Section to display saved addresses -->
+        <div id="savedAddresses">
+          
+        </div>
+
+        <!-- Add or Edit Address Form -->
+        <h2 id="formTitle">Add New Address</h2>
+        <form class="addressForm">
+            <input type="hidden" id="sid" name="sid">
+            <input type="text" id="addressNickName" name="addressNickName" placeholder="Address Nickname" required>
+            <input type="text" id="latitude" name="latitude" placeholder="Latitude" required>
+            <input type="text" id="longitude" name="longitude" placeholder="Longitude" required>
+            <input type="number" id="pincode" name="pincode" placeholder="Pincode" required>
+            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="state" name="state" placeholder="State" required>
+            <input type="text" id="nation" name="nation" placeholder="Nation" required>
+            <input type="number" id="userId" name="userId" placeholder="UserID" required>
+            <button type="button" onclick="addAddress(event)">Save</button>
+
+        </form>
+        </div>
+    </div>
+
+    <script src="SavedAddress.js"></script>
+</body>
+</html>

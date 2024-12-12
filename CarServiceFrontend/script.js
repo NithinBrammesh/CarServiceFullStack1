@@ -55,7 +55,7 @@ function displayCarCategories(categories) {
          <td>${id}</td>
          <td><span class="carType">${carType}</span></td>
          <td><span class="price">${price}</span></td>
-         <td><button  style ="width:60px; background-color: white;" class="editRow" onclick="addEdit(${id})">Edit</button>
+         <td><button style ="width:60px; background-color: white;" class="editRow" onclick="addEdit(${id})">Edit</button>
          <button  style="width: 60px; background-color:red; color: white;" class="deleteRow" onclick="addDelete(${id})">delete</button></td></tr>`;
      });
      html += "</tbody></table>";

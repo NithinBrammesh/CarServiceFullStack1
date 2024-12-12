@@ -21,19 +21,7 @@ function getUserDetails() {
         xhr.send();
     });
 }
-// Fetch and display data on page load
-window.onload = function () {
-    getUserDetails()
-    .then(data => {
-        console.log("Response from API:", data); // Log the data
-        displayUserDetails(data);
-    })
-    .catch(error => {
-        console.error("Error fetching user details:", error);
-        document.getElementById("userDetailsList").innerHTML = `<p>${error}</p>`;
-    });
 
-    };
 
 // Function to display user details
 function displayUserDetails(users) {
@@ -55,7 +43,7 @@ function displayUserDetails(users) {
                 <th>Action</th>
             </tr>
              </thead>
-             <tbody id="userTableData">
+             <tbody id="userTableBody">
     `;
 
     // Iterate through the users and add rows
@@ -74,8 +62,8 @@ function displayUserDetails(users) {
         <td><span class="phoneNo">${phoneNo}</span></td>
         <td><span class="email">${email}</span></td>
         <td><span class="password">${password}</span></td>
-        <td><button  style ="width:60px; background-color: white;" class="editRow" onclick="addEdit(${userId})">Edit</button> 
-        <button  style="width: 60px; background-color:red; color: white;" class="deleteRow" onclick="addDelete(${userId})">delete</button></td></tr> `;
+        <td><button style ="width:60px; background-color: white;" class="editRow" onclick="addEdit(${userId})">Edit</button> 
+        <button style="width: 60px; background-color:red; color: white;" class="deleteRow" onclick="addDelete(${userId})">delete</button></td></tr> `;
         
     });
 
@@ -134,7 +122,7 @@ function cancelEdit(userId ,name ,phoneNo ,email ,password) {
     row.innerHTML = `
     <td>${userId}</td>
     <td class="name">${name}</td>
-    <td class="phone">${phoneNo}</td>
+    <td class="phoneNo">${phoneNo}</td>
     <td class="email">${email}</td>
     <td class="password">${password}</td>
     <td>
@@ -146,15 +134,12 @@ function cancelEdit(userId ,name ,phoneNo ,email ,password) {
     console.log("Edit canceled");
 }
 
-function validateNumberInput(num){
-
-    const Values = num.value;
-
-    if(!Values.match(/^\d*$/)){
-        alert("Invalid input! please enter numerical values");
-        console.log("Enter a valid number");
+function validateNumberInput(input){
+    const sanitizedValue = input.value.replace(/\D/g, ""); // Allow digits only
+    if (input.value !== sanitizedValue) {
+        alert("Invalid input! Please enter numerical values only.");
+        input.value = sanitizedValue;
     }
-    num.value = Values.replace(/[^\d]/g, "");
 }
 
 function saveRow(userId) {
@@ -198,6 +183,21 @@ function saveRow(userId) {
     xhr.send(data);
 }
 
+
+// Fetch and display data on page load
+window.onload = function () {
+    getUserDetails()
+    .then(data => {
+        console.log("Response from API:", data); // Log the data
+        displayUserDetails(data);
+    })
+    .catch(error => {
+        console.error("Error fetching user details:", error);
+        document.getElementById("userDetailsList").innerHTML = `<p>${error}</p>`;
+    });
+
+    };
+
   function editAdd(userId){
     const row = document.getElementById(`row-${userId}`);
     const name = row.querySelector(".name").innerText;
@@ -220,34 +220,28 @@ function saveRow(userId) {
     console.log(row.innerHTML);
 
   }
-{/* <span class="name">${name}</span></td>
-        <td><span class="phoneNo">${phoneNo}</span></td>
-        <td><span class="email">${email}</span></td>
-        <td><span class="password">${password}</span></td> */}
 
     // posting new value to table
     function addUser(event) {
         event.preventDefault(); // Prevent form submission from reloading the page
-    
-        let row = document.getElementById(`row-${userId}`);
-        let name = row.querySelector(".name").value;
-        let phoneNo = row.querySelector(".phoneNo").value;
-        let email = row.querySelector(".email").value;
-        let password = row.querySelector(".password").value;
-
-        // Get values from the input fields
-
-        if (!name|| !phoneNo || !email || !password) {
+        
+         let row = document.getElementById(`row-${userId}`);
+         let name = row.querySelector(".name").innerText;
+         let phoneNo = row.querySelector(".phoneNo").innerText;
+         let email= row.querySelector(".email").innerText;
+         let password = row.querySelector(".password").innerText;
+        
+        if (!name || !phoneNo || !email || !password) {
             alert("Please fill in all fields!");
             return;
         }
-
+    
         // Log input values
-        console.log("Adding userDetails:", {name , phoneNo , email , password});
-    
+        console.log("Adding userDetails:", { name, phoneNo, email, password });
+        
         // Prepare request payload
-        const userData = JSON.stringify({name , phoneNo , email , password});
-    
+        const userData = JSON.stringify({ name, phoneNo, email, password });
+        
         // Send the request to the backend
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "http://localhost:8081/api/userDetails", true);
@@ -255,61 +249,61 @@ function saveRow(userId) {
     
         xhr.onreadystatechange = function () {
             console.log("ReadyState:", xhr.readyState, "Status:", xhr.status);
-    
+        
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 201) {
                     // Parse the response JSON
                     const newUser = JSON.parse(xhr.responseText);
-                    console.log("Car added successfully:", newUser);
-
-                      // Dynamically add the new row to the table
-                      const tableBody = document.getElementById("userTableBody");
-                      const newRow = document.createElement("tr");
-                      newRow.id = `row-${newUser.userId}`;
-                      newRow.innerHTML = `
-                          <td>${newUser.userId}</td>
-                          <td>${newUser.name}</td>
-                          <td>${newUser.phoneNo}</td>
-                          <td>${newUser.email}</td>
-                          <td>
-                              <button class="editRow" onclick="addEdit(${newUser.userId})">Edit</button>
-                              <button class="deleteRow" style="background-color:red;color:white;" onclick="addDelete(${newUser.userId})">Delete</button>
-                          </td>
-                      `;
-                      tableBody.appendChild(newRow);
-               // Reset input fields
-              userNameInput.value="";
-              userEmailInput.value="";
-              userPhoneInput.value="";
-              userPasswordInput.value="";
-
-               alert("User added successfully!");
-           } else {
-               // Log error if the request fails
-               console.error("Failed to add user:", xhr.statusText);
-               alert("Error adding user. Please try again.");
-           }
-        }
-    };
-    xhr.onerror = function () {
-        console.error("Network error occurred while adding user.");
-        alert("Network error. Please check your server.");
-    };
-
-    xhr.send(userData);
-
+                    console.log("User added successfully:", newUser);
+    
+                    // Dynamically add the new row to the table
+                    const tableBody = document.getElementById("userTableBody");
+                    const newRow = document.createElement("tr");
+                    newRow.id = `row-${newUser.userId}`;
+                    newRow.innerHTML = `
+                        <td>${newUser.userId}</td>
+                        <td>${newUser.name}</td>
+                        <td>${newUser.phoneNo}</td>
+                        <td>${newUser.email}</td>
+                        <td>
+                            <button class="editRow" onclick="addEdit(${newUser.userId})">Edit</button>
+                            <button class="deleteRow" style="background-color:red;color:white;" onclick="addDelete(${newUser.userId})">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(newRow);
+    
+                    // Reset input fields
+                    document.getElementById("nameInput").value = "";
+                    document.getElementById("phoneInput").value = "";
+                    document.getElementById("emailInput").value = "";
+                    document.getElementById("passwordInput").value = "";
+    
+                    alert("User added successfully!");
+                } else {
+                    console.error("Failed to add user:", xhr.statusText);
+                    alert("Error adding user. Please try again.");
+                }
+            }
+        };
+        
+        xhr.onerror = function () {
+            console.error("Network error occurred while adding user.");
+            alert("Network error. Please check your server.");
+        };
+    
+        xhr.send(userData);
     }
-
+    
     // function create(){
     //     document.querySelector(".create_form").Style.display="block";
     //     document.querySelector(".add_div").Style.display="none";
     // }
 
      // Function to handle delete action
-function addDelete(id) {
+function addDelete(userId) {
 
     // Make an AJAX request to delete the item
-    fetch(`http://localhost:8081/api/userDetails/${id}`, {
+    fetch(`http://localhost:8081/api/userDetails/${userId}`, {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json",

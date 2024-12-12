@@ -1,10 +1,9 @@
 *{
     border: 0;
     padding: 0;
-    font-family: 'popins',sans-serif;
     box-sizing: border-box;
+    font-family:'popins',sans-serif;
 }
-
 
 body {
     width: auto;
@@ -16,67 +15,12 @@ body {
     background: url(premium_photo-.jpeg);
     backdrop-filter: blur(2px);
     background-position: center;
-
-}
-
-.container {
-    width: 50%;
-    height: 800px;
-    margin: auto;
-    text-align: center;
-    border: solid white;
-    border-radius:10px;
-    padding: 40px 30px;
-    display: flex; /* Enable flexbox for centering */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center;
-}
-
-.container button{
-    background-color: #dfff00;
-    color: black;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 7px;
-    width: 60px;
-    border: 1px solid #dfff00 ;
-    width: 100px;
-    height: 30px;
-
-}
-
-.add_div{
-    padding-top: 20px;
-    
-    
-}
-.create_form{
-    padding-top: 10px;
-}
-
-.create_form input{
-    font-family: "Times New Roman";
-    width: 150px;
-    height: 40px;
-    background: transparent;
-    border: 1px solid #c5832b;
-    border-radius: 9px;
-    color: hsl(44, 89%, 93%);
-    font-size: 16px;
-}
-.create_form input::placeholder {
-    text-align: center;
-    font-size: 16px;
-    font-style: italic
 }
 
 .navbar{
     margin: auto;
-    height: 1200px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    height: 1000px;
+    margin: auto;
 }
 
 .icon{
@@ -85,7 +29,9 @@ body {
     font-family: Arial;
     width: 800px;
     margin-bottom: 150px;
+
 }
+
 
 .logo{
 color: #dfff00;
@@ -157,15 +103,66 @@ ul li a:hover{
 
 }
 
-.btn{
+.container h1{
+    font-size: 36px;
+    text-align: center;
+    color: #c5832b;
+}
+
+.container {
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    text-align: center;
+    border: solid white;
+    border-radius:10px;
+    padding: 40px 30px;
+    display: flex; /* Enable flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+}
+
+.container button{
+    background-color: #dfff00;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 7px;
+    width: 60px;
+    border: 1px solid #dfff00 ;
     width: 100px;
-    height: 40px;
+    height: 30px;
 
 }
 
-.container h1 {
-    font-size: 36px;
-    color: #fdf4dc;
+.addressForm{
+    padding-top: 10px;
+}
+
+.addressForm input{
+    font-family: "Times New Roman";
+    width: 150px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #c5832b;
+    border-radius: 9px;
+    color: hsl(44, 89%, 93%);
+    font-size: 16px;
+}
+
+.addressForm input::placeholder {
+    text-align: center;
+    font-size: 16px;
+    font-style: italic
+}
+
+.navbar{
+    margin: auto;
+    height: 1200px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .carTable {
@@ -194,7 +191,8 @@ tr:hover {
     cursor: pointer;
 }
 
+.btn{
+    width: 100px;
+    height: 40px;
 
-/* .create_form ,.update_form{
-    display: none;
-} */
+}
