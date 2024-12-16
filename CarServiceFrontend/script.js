@@ -247,7 +247,6 @@ window.onload = function () {
     }
     
 
-     
     function create(){
         document.querySelector(".create_form").Style.display="block";
         document.querySelector(".add_div").Style.display="none";
