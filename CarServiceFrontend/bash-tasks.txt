@@ -42,5 +42,15 @@ Let me know if you want detailed examples for any of these!
 
 
 
+Current folder - recursive go via all files 
 
+file  extenstion - count 
+
+.html - 10 - 20000 bytes  
+.css - 5  - 
+.js - 9 
+.png - 
+.jpeg - 
+
+https://ubuntu.com/blog/regex-basics
 

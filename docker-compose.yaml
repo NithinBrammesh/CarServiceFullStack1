@@ -3,32 +3,33 @@ version: '3.8'
 services:
   db:
     image: mysql:8.0
+    container_name: car_service_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: Car_Service_Webapp
       MYSQL_USER: webapp_user
       MYSQL_PASSWORD: carServicePass
     ports:
-      - "9001:3306"
+      - "9001:3306" # Expose MySQL on port 9001 of the host
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 3
     volumes:
-      - /home/nithin/Desktop/CarServiceFullStack/database-volume:/var/lib/mysql
+      - db_data:/var/lib/mysql # Persistent storage for database
 
   backend:
     build:
-      context: ./CarService
+      context: ./CarService # Path to your backend project
       dockerfile: Dockerfile
-      network: host
+    container_name: car_service_backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/Car_Service_Webapp
       SPRING_DATASOURCE_USERNAME: webapp_user
       SPRING_DATASOURCE_PASSWORD: carServicePass
     ports:
-      - "9002:8081"
+      - "9002:8081" # Expose Spring Boot app on port 9002
     depends_on:
       db:
         condition: service_healthy
@@ -37,12 +38,11 @@ services:
     build:
       context: ./CarServiceFrontend # Path to your frontend project
       dockerfile: Dockerfile
-      network: host
+    container_name: car_service_frontend
     ports:
-      - "9003:80"
+      - "9003:80" # Expose frontend on port 9003
     depends_on:
       - backend
 
-# volumes:
-#   my-vol:
-#     external: true
+volumes:
+  db_data:

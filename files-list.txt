@@ -1,0 +1,33 @@
+
+#start scanning directory
+
+#empty array
+file_extensions_list = ""
+
+
+function evaluate_file(){
+
+#extract file extension
+
+#file size 
+
+
+}
+
+function evaluate_folder()
+{
+    #path will the parameter
+
+    #loop via current directory 
+
+    #check if item is file or directory
+
+    if it's file evaluate_file
+
+    if it's directory evaluate_folder
+}
+
+
+
+
+evaluate_folder ()

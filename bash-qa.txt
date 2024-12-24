@@ -1,4 +1,1 @@
-chmod
-chown
-
-how to add execute permission to a script or file. 
+AWS account -password (Nithin@123$)
